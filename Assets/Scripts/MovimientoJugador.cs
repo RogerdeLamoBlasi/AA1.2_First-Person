@@ -4,8 +4,11 @@ using UnityEngine.InputSystem;
 public class MovimientoJugador : MonoBehaviour
 {
     public float velocidad = 5;
-    public float distanciaSuelo = 1.1f;
+    public float distanciaSuelo = 1.5f;
+    public float fuerzaSalto = 5;
+    public LayerMask capaSuelo;
 
+    private bool puedeSaltar = true;
     private bool estaEnSuelo;
     private Rigidbody rb;
 
@@ -16,9 +19,10 @@ public class MovimientoJugador : MonoBehaviour
 
     void Update()
     {
-        Vector3 origenRayo = transform.position + Vector3.up * 0.1f;
+        Vector3 origenRay = transform.position + Vector3.up * 0.1f;
 
-        estaEnSuelo = Physics.Raycast(origenRayo, Vector3.down, distanciaSuelo);
+        estaEnSuelo = Physics.Raycast(origenRay, Vector3.down, distanciaSuelo, capaSuelo);
+        Debug.Log(estaEnSuelo);
 
         if (estaEnSuelo)
         {
@@ -32,6 +36,13 @@ public class MovimientoJugador : MonoBehaviour
                 movimiento.x = -1;
             if (Keyboard.current.dKey.isPressed)
                 movimiento.x = 1;
+
+            //El salto se realiza solo si el jugador esta en el suelo
+            if (estaEnSuelo)
+                puedeSaltar = true;
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && puedeSaltar)
+                rb.AddForce(Vector3.up * fuerzaSalto, ForceMode.Impulse);
+                puedeSaltar = false;
 
             Vector3 direccion = transform.forward * movimiento.y + transform.right * movimiento.x;
 
