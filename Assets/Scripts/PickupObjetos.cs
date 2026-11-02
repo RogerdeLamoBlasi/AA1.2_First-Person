@@ -5,13 +5,16 @@ public class PickupObjetos : MonoBehaviour
 {
     public Transform camara;
     public LayerMask capaObjetos;
-    public float distanciaMaxima = 2f;
+    public float distanciaMaxima = 2;
+    public float distanciaObjeto = 2;
+    public float distanciaMinima = 1;
 
     private GameObject PickupObjeto;
     private Rigidbody fisicasObjeto;
-    private float distanciaObjeto;
     private bool gravedadOriginal;
     private bool KinematicOriginal;
+
+
 
     void Update()
     {
@@ -48,8 +51,6 @@ public class PickupObjetos : MonoBehaviour
     {
         fisicasObjeto = impacto.rigidbody;
         PickupObjeto = fisicasObjeto.gameObject;
-
-        distanciaObjeto = impacto.distance;
 
         gravedadOriginal = fisicasObjeto.useGravity;
         KinematicOriginal = fisicasObjeto.isKinematic;
