@@ -10,7 +10,7 @@ public class PickupObjetos : MonoBehaviour
     public float distanciaMinima = 1;
 
     // Pickup avanzado
-    public float distanciaMaximaPickup = 4;
+    public float distanciaMaximaEnMano = 4; //No se que nombre ponerle, es la distancia maxima que puedes alejar el objeto con el raton
     public float velocidadRueda = 0.5f;
     public float velocidadSeguimiento = 10;
     public float fuerzaLanzamiento = 5;
@@ -36,7 +36,7 @@ public class PickupObjetos : MonoBehaviour
 
                 distanciaObjeto -= rueda * velocidadRueda;
 
-                distanciaObjeto = Mathf.Clamp(distanciaObjeto, distanciaMinima, distanciaMaximaPickup);
+                distanciaObjeto = Mathf.Clamp(distanciaObjeto, distanciaMinima, distanciaMaximaEnMano);
             }
 
             return;
