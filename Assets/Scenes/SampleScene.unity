@@ -496,6 +496,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   distanciaMaxima: 2
+  distanciaObjeto: 2
+  distanciaMinima: 1
+  distanciaMaximaPickup: 4
+  velocidadRueda: 3
+  velocidadSeguimiento: 10
+  fuerzaLanzamiento: 3
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
