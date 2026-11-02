@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class JetpackJugador : MonoBehaviour
 {
     public Image barraJetpack;
-    public float fuerzaJetpack = 15f;
-    public float distanciaSuelo = 1f;
+    public float fuerzaJetpack = 15;
+    public float distanciaSuelo = 1;
 
     private Rigidbody rb;
-    private float combustible = 1f;
-    private float tiempoRecarga = 0f;
+    private float combustible = 1;
+    private float tiempoRecarga = 0;
     private bool estaEnSuelo;
 
     void Start()
@@ -25,15 +25,15 @@ public class JetpackJugador : MonoBehaviour
 
         if (estaEnSuelo)
         {
-            if (combustible <= 0f)
+            if (combustible <= 0)
                 tiempoRecarga += Time.deltaTime;
 
-            if (combustible > 0f || tiempoRecarga >= 0.5f)
+            if (combustible > 0 || tiempoRecarga >= 0.5f)
                 combustible += Time.deltaTime / 0.5f;
         }
         else
         {
-            tiempoRecarga = 0f;
+            tiempoRecarga = 0;
         }
 
         combustible = Mathf.Clamp01(combustible);
@@ -44,16 +44,16 @@ public class JetpackJugador : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!estaEnSuelo && Keyboard.current.spaceKey.isPressed && combustible > 0f)
+        if (!estaEnSuelo && Keyboard.current.spaceKey.isPressed && combustible > 0)
         {
             rb.AddForce(Vector3.up * fuerzaJetpack, ForceMode.Acceleration);
 
             combustible -= Time.fixedDeltaTime;
 
-            if (combustible <= 0f)
+            if (combustible <= 0)
             {
-                combustible = 0f;
-                tiempoRecarga = 0f;
+                combustible = 0;
+                tiempoRecarga = 0;
             }
         }
     }
