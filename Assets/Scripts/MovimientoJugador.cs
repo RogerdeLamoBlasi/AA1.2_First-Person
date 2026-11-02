@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 public class MovimientoJugador : MonoBehaviour
 {
     public float velocidad = 5;
-    public float distanciaSuelo = 1.5f;
+    public float distanciaSuelo = 1;
     public float fuerzaSalto = 5;
     public LayerMask capaSuelo;
+
 
     private bool puedeSaltar = true;
     private bool estaEnSuelo;
@@ -22,7 +23,6 @@ public class MovimientoJugador : MonoBehaviour
         Vector3 origenRay = transform.position + Vector3.up * 0.1f;
 
         estaEnSuelo = Physics.Raycast(origenRay, Vector3.down, distanciaSuelo, capaSuelo);
-        Debug.Log(estaEnSuelo);
 
         if (estaEnSuelo)
         {

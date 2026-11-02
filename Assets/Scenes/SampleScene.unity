@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 771677636}
   - component: {fileID: 771677639}
   - component: {fileID: 771677638}
+  - component: {fileID: 771677640}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -446,7 +447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoJugador
   velocidad: 5
-  distanciaSuelo: 1.5
+  distanciaSuelo: 1
+  fuerzaSalto: 5
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!54 &771677639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -474,6 +479,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &771677640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771677635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe04dca90ea5eae48b69b0a28f18bac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupObjetos
+  camara: {fileID: 330585546}
+  capaObjetos:
+    serializedVersion: 2
+    m_Bits: 64
+  distanciaMaxima: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +557,8 @@ GameObject:
   - component: {fileID: 1114376509}
   - component: {fileID: 1114376508}
   - component: {fileID: 1114376507}
-  m_Layer: 0
+  - component: {fileID: 1114376511}
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,12 +652,39 @@ Transform:
   m_GameObject: {fileID: 1114376506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.90493, y: 1.89, z: 7.08}
+  m_LocalPosition: {x: 0.90493, y: 0.66, z: 7.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1114376511
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114376506}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1196995882
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +811,7 @@ GameObject:
   - component: {fileID: 2032903163}
   - component: {fileID: 2032903162}
   - component: {fileID: 2032903161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
